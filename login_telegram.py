@@ -1,28 +1,16 @@
-# login_telegram.py
+# from telegram import Bot, Update
+from telegram.ext import Updater, CommandHandler
 
-from telethon.sync import TelegramClient
+# Replace 'your_bot_token' with the token provided by BotFather
+bot_token = ''
+updater = Updater(token=bot_token, use_context=True)
+dispatcher = updater.dispatcher
 
-api_id = '25306674'
-api_hash = '37f74dabb6f0369136e146b7c47a32df'
-phone_number = '9562237983'
+def start(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Hello! I'm your bot.")
 
-# Create a new TelegramClient instance
-client = TelegramClient('session_name', api_id, api_hash)
+start_handler = CommandHandler('start', start)
+dispatcher.add_handler(start_handler)
 
-# Function to perform login
-async def perform_login():
-    await client.start(phone=phone_number)
-    # Check if user is already authorized or not
-    if await client.is_user_authorized():
-        print("User is already authorized.")
-    else:
-        # Send code to phone, then ask user to enter it
-        await client.send_code_request(phone_number)
-        code = input('Enter the code you received: ')
-        # Sign in with the code
-        await client.sign_in(phone_number, code)
-        print("Successfully logged in.")
-
-# Running the login function
-with client:
-    client.loop.run_until_complete(perform_login())
+updater.start_polling()
+updater.idle()
