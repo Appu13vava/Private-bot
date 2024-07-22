@@ -2,7 +2,7 @@
 from telegram.ext import Updater, CommandHandler
 
 # Replace 'your_bot_token' with the token provided by BotFather
-bot_token = ''
+bot_token = '7307746406:AAEeU_xh_HLDhk8y9ewmNduSPwtjXuA-xGE'
 updater = Updater(token=bot_token, use_context=True)
 dispatcher = updater.dispatcher
 
