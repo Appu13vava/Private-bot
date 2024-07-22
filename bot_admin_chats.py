@@ -1,6 +1,7 @@
 import asyncio
 from telegram import Bot
-from telegram.ext import Application
+from telegram.ext import Application, CommandHandler, CallbackContext
+from telegram import Update
 
 # Replace 'YOUR_BOT_TOKEN' with your actual bot token
 BOT_TOKEN = 'YOUR_BOT_TOKEN'
@@ -14,12 +15,13 @@ async def get_admin_chats():
     admin_chats = []
 
     for update in updates:
-        chat = update.message.chat
-        if chat.id in admin_chats:
-            continue
-        chat_member = await bot.get_chat_administrators(chat.id)
-        if any(member.user.id == bot.id for member in chat_member):
-            admin_chats.append(chat.id)
+        if update.message:
+            chat = update.message.chat
+            if chat.id in admin_chats:
+                continue
+            chat_member = await bot.get_chat_administrators(chat.id)
+            if any(member.user.id == bot.id for member in chat_member):
+                admin_chats.append(chat.id)
     
     return admin_chats
 
