@@ -86,8 +86,7 @@ async def authenticate(update: Update, context: CallbackContext) -> None:
         await update.message.reply_text('You have been authenticated as an admin.')
     else:
         await update.message.reply_text('Authentication failed.')
-
-def check_admin(update: Update) -> bool:
+        def check_admin(update: Update) -> bool:
     user_id = update.message.from_user.id
     authorized_users = load_authorized_users()
     return authorized_users.get(user_id, False)
