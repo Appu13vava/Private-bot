@@ -1,10 +1,1 @@
-services:
-  - type: web
-    name: telegram-bot-admin-chats
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python bot_admin_chats.py
-    envVars:
-      - key: BOT_TOKEN
-        fromDatabase: your-database
-        # Or directly as a string: value: 'your-bot-token'
+
