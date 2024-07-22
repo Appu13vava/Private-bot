@@ -1,10 +1,12 @@
+import os
 import asyncio
 from telegram import Bot
-from telegram.ext import Application, CommandHandler, CallbackContext
-from telegram import Update
 
-# Replace 'YOUR_BOT_TOKEN' with your actual bot token
-BOT_TOKEN = 'YOUR_BOT_TOKEN'
+# Retrieve the bot token from environment variables
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+
+if BOT_TOKEN is None:
+    raise ValueError("No BOT_TOKEN environment variable set. Please set it to the correct value.")
 
 async def get_admin_chats():
     # Create an instance of the Bot
@@ -26,8 +28,11 @@ async def get_admin_chats():
     return admin_chats
 
 async def main():
-    admin_chats = await get_admin_chats()
-    print(f"Admin chats: {admin_chats}")
+    try:
+        admin_chats = await get_admin_chats()
+        print(f"Admin chats: {admin_chats}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 # Run the main function using asyncio
 if __name__ == "__main__":
