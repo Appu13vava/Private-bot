@@ -1,6 +1,5 @@
-from telegram import Bot
+from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
-from telegram.update import Update
 import logging
 
 # Replace with your actual bot token
@@ -28,15 +27,15 @@ def main():
     """Start the bot and set up command handlers."""
     updater = Updater(token=TELEGRAM_BOT_TOKEN, use_context=True)
     dp = updater.dispatcher
-
+    
     # Register command handlers
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('count_users', count_users))
-
+    
     # Start the Bot
     updater.start_polling()
     logger.info("Bot is polling...")
-
+    
     # Run the bot until you send a signal to stop
     updater.idle()
 
