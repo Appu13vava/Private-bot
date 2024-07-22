@@ -2,9 +2,9 @@
 
 from telethon.sync import TelegramClient
 
-api_id = 'your_api_id'
-api_hash = 'your_api_hash'
-phone_number = 'your_phone_number'
+api_id = '25306674'
+api_hash = '37f74dabb6f0369136e146b7c47a32df'
+phone_number = '9562237983'
 
 # Create a new TelegramClient instance
 client = TelegramClient('session_name', api_id, api_hash)
