@@ -2,9 +2,9 @@ from telethon.sync import TelegramClient, events
 from telethon.tl.functions.channels import SendMessageRequest
 
 # Telegram API credentials (replace with your actual values)
-api_id = 'your_api_id'
-api_hash = 'your_api_hash'
-bot_token = 'your_bot_token'
+api_id = '15917107'
+api_hash = 'fea3f7efd54a3e37e9c71617e1a9639e''
+bot_token = ''
 
 # Session name
 session_name = 'my_telegram_session'
