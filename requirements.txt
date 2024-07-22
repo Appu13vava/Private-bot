@@ -1,1 +1,2 @@
 python-telegram-bot==20.0  # Replace with the specific version you are using
+python-telegram-bot==13.7
