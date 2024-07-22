@@ -1,4 +1,1 @@
-pip freeze > requirements.txt
-git add requirements.txt
-git commit -m "Add requirements.txt for project dependencies"
-git push origin main
+python-telegram-bot==20.0  # Replace with the specific version you are using
