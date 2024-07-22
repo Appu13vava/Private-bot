@@ -2,7 +2,7 @@ from telegram import Bot
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from telegram.update import Update
 
-# Replace this with your actual Telegram bot token
+# Replace with your actual bot token
 TELEGRAM_BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
 
 def start(update: Update, context: CallbackContext):
