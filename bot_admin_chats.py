@@ -12,6 +12,9 @@ async def get_admin_chats():
     # Create an instance of the Bot
     bot = Bot(token=BOT_TOKEN)
 
+    # Ensure bot is properly initialized
+    await bot.get_me()
+
     # Fetch updates
     updates = await bot.get_updates()
     admin_chats = []
