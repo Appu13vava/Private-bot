@@ -4,7 +4,7 @@ from telethon.tl.functions.channels import SendMessageRequest
 # Telegram API credentials (replace with your actual values)
 api_id = '15917107'
 api_hash = 'fea3f7efd54a3e37e9c71617e1a9639e''
-bot_token = ''
+bot_token = '7307746406:AAEeU_xh_HLDhk8y9ewmNduSPwtjXuA-xGE'
 
 # Session name
 session_name = 'my_telegram_session'
