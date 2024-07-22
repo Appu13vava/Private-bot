@@ -1,42 +1,30 @@
-from telegram import Update
-from telegram.ext import Updater, CommandHandler, CallbackContext
-import logging
+from telegram import Bot
+from telegram.ext import Updater, CommandHandler
 
-# Replace with your actual bot token
-TELEGRAM_BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
+# Replace 'your-token-here' with your actual bot token
+TELEGRAM_BOT_TOKEN = 'your-token-here'
 
-# Set up logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-# This will store unique user IDs
-user_ids = set()
-
-def start(update: Update, context: CallbackContext):
-    """Send a greeting message when the /start command is issued and track the user."""
-    user_id = update.message.from_user.id
-    user_ids.add(user_id)
-    update.message.reply_text('Hi!')
-
-def count_users(update: Update, context: CallbackContext):
-    """Respond with the count of unique users."""
-    user_count = len(user_ids)
-    update.message.reply_text(f'Total unique users: {user_count}')
+def start(update, context):
+    update.message.reply_text('Hello!')
 
 def main():
-    """Start the bot and set up command handlers."""
-    updater = Updater(token=TELEGRAM_BOT_TOKEN, use_context=True)
+    # Create a Bot instance
+    bot = Bot(token=TELEGRAM_BOT_TOKEN)
+    
+    # Create the Updater and pass the Bot instance
+    updater = Updater(bot=bot, use_context=True)
+    
+    # Get the dispatcher to register handlers
     dp = updater.dispatcher
     
-    # Register command handlers
+    # Register the /start command handler
     dp.add_handler(CommandHandler('start', start))
-    dp.add_handler(CommandHandler('count_users', count_users))
     
     # Start the Bot
     updater.start_polling()
-    logger.info("Bot is polling...")
     
-    # Run the bot until you send a signal to stop
+    # Block until you press Ctrl+C or the process receives SIGINT,
+    # SIGTERM or SIGABRT. This should be used most of the time.
     updater.idle()
 
 if __name__ == '__main__':
