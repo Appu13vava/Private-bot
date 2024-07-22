@@ -1,7 +1,7 @@
 import os
 import asyncio
 from telegram import Bot
-from telegram.error import BadRequest
+from telegram.error import BadRequest, TimedOut, RetryAfter
 
 # Retrieve the bot token from environment variables
 BOT_TOKEN = os.getenv('BOT_TOKEN')
@@ -28,6 +28,14 @@ async def get_admin_chats():
             except BadRequest as e:
                 # Handle cases where no administrators exist or private chats
                 print(f"Failed to get administrators for chat {chat.id}: {e}")
+            except RetryAfter as e:
+                # Handle rate limit exceedance
+                print(f"Rate limit exceeded. Retrying after {e.retry_after} seconds.")
+                await asyncio.sleep(e.retry_after)
+            except TimedOut as e:
+                # Handle timeout
+                print(f"Request timed out: {e}. Retrying...")
+                await asyncio.sleep(10)
 
     return admin_chats
 
