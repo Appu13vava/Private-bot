@@ -1,22 +1,22 @@
-from telegram import Bot, Update
-from telegram.ext import Application, CommandHandler, ContextTypes
+import telebot
+from dotenv import load_dotenv
+import os
 
-# Replace 'your-token-here' with your actual bot token
-TELEGRAM_BOT_TOKEN = 'your-token-here'
+# Load environment variables from .env file
+load_dotenv()
 
-# Define the command handler for the /start command
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text('Hi')
+# Get bot token from environment variable
+BOT_TOKEN = os.getenv('BOT_TOKEN')
 
-def main():
-    # Create the Application and pass the bot token
-    application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
-    
-    # Register the /start command handler
-    application.add_handler(CommandHandler('start', start))
-    
-    # Start the Bot
-    application.run_polling()
+# Initialize bot
+bot = telebot.TeleBot(BOT_TOKEN)
 
-if __name__ == '__main__':
-    main()
+# Replace with your channel ID or username
+CHANNEL_ID = '@YourChannelUsername'  # or '-1001234567890' for private channels
+
+def send_message(text):
+    bot.send_message(chat_id=CHANNEL_ID, text=text)
+
+# Example usage
+if __name__ == "__main__":
+    send_message("Hello, this is a test message from the bot!")
