@@ -1,3 +1,20 @@
-git add poetry.lock
-git commit -m "Regenerate poetry.lock with correct metadata"
-git push origin your-branch
+[[metadata]]
+lock-version = "1.1"
+python-versions = "^3.8"
+
+[[package]]
+name = "requests"
+version = "2.25.1"
+description = "Python HTTP for Humans."
+category = "main"
+python-versions = "*"
+
+[[package.dependencies]]
+urllib3 = ">=1.21.1,<1.27"
+
+[[package]]
+name = "urllib3"
+version = "1.26.6"
+description = "HTTP library with thread-safe connection pooling."
+category = "main"
+python-versions = "*"
