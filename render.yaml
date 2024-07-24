@@ -1,8 +1,12 @@
 services:
   - type: web
     name: my-python-bot
-    env: python
-    buildCommand: |
-      apt-get update && apt-get install -y python3 python3-pip
-      pip3 install -r requirements.txt
-    startCommand: python3 bot.py
+    repo: https://github.com/yourusername/your-repo
+    branch: main
+    buildCommand: ""
+    startCommand: python bot.py
+    env:
+      - key: BOT_TOKEN
+        value: your_bot_token_here
+      - key: CHANNEL_ID
+        value: @YourChannelUsername
