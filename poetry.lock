@@ -1,1 +1,4 @@
-poetry add pyrojet
+[[package]]
+name = "requests"
+version = "2.25.1"
+description = "Python HTTP for Humans."
