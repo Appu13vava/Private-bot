@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "your-bot-name"
+name = "newdf"
 version = "0.1.0"
-description = "A bot that sends messages to a Telegram channel"
+description = "Description of your project"
 authors = ["Your Name <your.email@example.com>"]
 
 [tool.poetry.dependencies]
