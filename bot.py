@@ -12,10 +12,14 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # Replace with your channel ID or username
-CHANNEL_ID = '@YourChannelUsername'  # or '-1001234567890' for private channels
+CHANNEL_ID = os.getenv('CHANNEL_ID')
 
 def send_message(text):
-    bot.send_message(chat_id=CHANNEL_ID, text=text)
+    try:
+        bot.send_message(chat_id=CHANNEL_ID, text=text)
+        print("Message sent successfully.")
+    except Exception as e:
+        print(f"Failed to send message: {e}")
 
 # Example usage
 if __name__ == "__main__":
