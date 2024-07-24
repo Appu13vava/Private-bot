@@ -18,3 +18,7 @@ version = "1.26.6"
 description = "HTTP library with thread-safe connection pooling."
 category = "main"
 python-versions = "*"
+
+[[package.dependencies]]
+certifi = ">=2017.4.17"
+idna = ">=2.5,<3"
